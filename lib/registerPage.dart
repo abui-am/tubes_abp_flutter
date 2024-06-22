@@ -31,7 +31,7 @@ class _RegisterPageState extends State<RegisterPage> {
       final String confirmPassword = _confirmPasswordController.text;
       try {
         final response = await http.post(
-          Uri.parse('http://127.0.0.1:8000/api/register'),
+          Uri.parse('http://10.0.2.2:8000/api/register'),
           body: {
             'email': email,
             'name': name,

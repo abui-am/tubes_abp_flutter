@@ -25,7 +25,7 @@ class _LoginPageState extends State<LoginPage> {
       // Perform login /api/login
       try {
         final response = await http.post(
-          Uri.parse('http://127.0.0.1:8000/api/login'),
+          Uri.parse('http://10.0.2.2:8000/api/login'),
           body: {
             'email': email,
             'password': password,
@@ -35,7 +35,12 @@ class _LoginPageState extends State<LoginPage> {
         if (response.statusCode == 200) {
           final Map<String, dynamic> responseData = json.decode(response.body);
           print(responseData);
-
+          // Show toast
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              content: Text('Welcome ${responseData['user']['name']}'),
+            ),
+          );
           Navigator.push(
             context,
             MaterialPageRoute(
@@ -48,7 +53,14 @@ class _LoginPageState extends State<LoginPage> {
           );
         }
       } catch (e) {
+        // Show toast
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(
+            content: Text('Login failed'),
+          ),
+        );
         print('Error: $e');
+        // Log
       }
     }
   }

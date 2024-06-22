@@ -19,7 +19,7 @@ class CheckoutPage extends StatelessWidget {
     try {
       seatNumbers.forEach((seatNumber) async {
         final response = await http.post(
-          Uri.parse('http://localhost:8000/api/seats'),
+          Uri.parse('http://10.0.2.2:8000/api/seats'),
           body: {
             'concert_id': ticketDetails['id'].toString(),
             'seat_no': seatNumber,

@@ -29,7 +29,7 @@ class _BeliTiketPage extends State<BeliTiketPage> {
     try {
       final response = await http.get(
         Uri.parse(
-            'http://localhost:8000/api/seats?concert_id=$concertId&user_id=$userId&seat_type=$seatType'),
+            'http://10.0.2.2:8000/api/seats?concert_id=$concertId&user_id=$userId&seat_type=$seatType'),
       );
       if (response.statusCode == 200) {
         final List<Seat> data = json

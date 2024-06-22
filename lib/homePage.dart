@@ -38,7 +38,7 @@ class _HomePageState extends State<HomePage> {
   void _fetchDataConcert() async {
     try {
       final response =
-          await http.get(Uri.parse('http://127.0.0.1:8000/api/concerts'));
+          await http.get(Uri.parse('http://10.0.2.2:8000/api/concerts'));
       if (response.statusCode == 200) {
         final List<dynamic> data = json.decode(response.body);
         setState(() {
